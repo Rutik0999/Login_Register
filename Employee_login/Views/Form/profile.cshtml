@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Employee_login.Models.Emp_data>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+
+        .box {
+            border: 1px solid #ddd;
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 20px 0;
+            padding: 20px;
+        }
+
+        .profile-item {
+            margin-bottom: 15px;
+        }
+
+        .label {
+            font-weight: bold;
+            width: 150px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="box">
+        @Html.ActionLink("Go to Login Form","login");
+        @if (Model.Any())
+        {
+            var loggedUser = Model.FirstOrDefault(); 
+            <h1>Welcome @loggedUser.Employee_name</h1>
+
+            <div class="profile-item">
+                <span class="label">Employee Name:</span>
+                <span>@loggedUser.Employee_name</span>
+            </div>
+
+            <div class="profile-item">
+                <span class="label">Email Address:</span>
+                <span>@loggedUser.Email_address</span>
+            </div>
+            
+        }
+        else
+        {
+            <p>No Use Found</p>
+        }
+    </div>
+</body>
+</html>
